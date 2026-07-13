@@ -14,7 +14,7 @@ Just download newest [totally-not-cheat-menu.exe Release](https://github.com/Mat
 - **Triggerbot,**
 - **Bunnyhop**
 
-## GLOW
+## Glow
 **It will make players glow throught walls (wallhack).** <br><br>
 <img width="793" height="846" alt="image" src="https://github.com/user-attachments/assets/893244bc-a36d-4f13-9280-bcdeac65477a" />
 <img width="798" height="727" alt="image" src="https://github.com/user-attachments/assets/87c9feb4-09b8-4f47-9b8c-74cd30fb48cd" />
