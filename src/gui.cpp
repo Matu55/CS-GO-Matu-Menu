@@ -309,7 +309,10 @@ void gui::Render() noexcept
             globals::enemyChamsColor[1] = 0.f;
             globals::enemyChamsColor[2] = 0.f;
 
-            globals::chamsBright = 25.0f;
+            globals::chamsBright = 0.0f;
+
+
+            //Close menu
         }
 
         //Visual
