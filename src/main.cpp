@@ -4,7 +4,7 @@
 
 #include <thread>
 
-int APIENTRY wWinMain(HINSTANCE instance, HINSTANCE previousInstance, PWSTR arguments, int commandShow) {
+int APIENTRY wWinMain(HINSTANCE instance, HINSTANCE previousInstance, PWSTR arguments, int commandShow) {    
     //Hacks
     Memory mem{L"csgo.exe" };
 

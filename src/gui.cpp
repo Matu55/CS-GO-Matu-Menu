@@ -259,9 +259,8 @@ void gui::EndRender() noexcept {
 void gui::Render() noexcept 
 {
     // Don't render if we're shutting down
-    if (!isRunning) {
+    if (!isRunning)
         return;
-    }
 
     ImGui::SetNextWindowPos({0, 0});
     ImGui::SetNextWindowSize({WIDTH * dpiScale, HEIGHT * dpiScale});
@@ -274,77 +273,88 @@ void gui::Render() noexcept
         ImGuiWindowFlags_NoMove
     );
 
-    ImGui::Text("PANIC MODE");
-    if (ImGui::Button("PANIC!!!"))
+    if (globals::clientAddress != 0 && globals::engineAddress != 0)
     {
-        globals::glow = false;
-        globals::chams = false;
-        globals::radar = false;
-        globals::aimbot = false;
-        globals::norecoil = false;
-        globals::triggerbot = false;
-        globals::bhop = false;
+        ImGui::Text("Client Address: %p", (void*)globals::clientAddress);
+        ImGui::Text("Engine Address: %p", (void*)globals::engineAddress);
 
-        // Reset glow colors
-        globals::friendlyGlowColor[0] = 0.f;
-        globals::friendlyGlowColor[1] = 1.f;
-        globals::friendlyGlowColor[2] = 0.f;
-        globals::friendlyGlowColor[3] = 1.f;
+        ImGui::Text("\nPANIC MODE");
+        if (ImGui::Button("PANIC!!!"))
+        {
+            globals::glow = false;
+            globals::chams = false;
+            globals::radar = false;
+            globals::aimbot = false;
+            globals::norecoil = false;
+            globals::triggerbot = false;
+            globals::bhop = false;
 
-        globals::enemyGlowColor[0] = 1.f;
-        globals::enemyGlowColor[1] = 0.f;
-        globals::enemyGlowColor[2] = 0.f;
-        globals::enemyGlowColor[3] = 1.f;
+            // Reset glow colors
+            globals::friendlyGlowColor[0] = 0.f;
+            globals::friendlyGlowColor[1] = 1.f;
+            globals::friendlyGlowColor[2] = 0.f;
+            globals::friendlyGlowColor[3] = 1.f;
 
-        // Reset chams colors
-        globals::friendlyChamsColor[0] = 0.f;
-        globals::friendlyChamsColor[1] = 1.f;
-        globals::friendlyChamsColor[2] = 0.f;
+            globals::enemyGlowColor[0] = 1.f;
+            globals::enemyGlowColor[1] = 0.f;
+            globals::enemyGlowColor[2] = 0.f;
+            globals::enemyGlowColor[3] = 1.f;
 
-        globals::enemyChamsColor[0] = 1.f;
-        globals::enemyChamsColor[1] = 0.f;
-        globals::enemyChamsColor[2] = 0.f;
+            // Reset chams colors
+            globals::friendlyChamsColor[0] = 0.f;
+            globals::friendlyChamsColor[1] = 1.f;
+            globals::friendlyChamsColor[2] = 0.f;
 
-        globals::chamsBright = 25.0f;
+            globals::enemyChamsColor[0] = 1.f;
+            globals::enemyChamsColor[1] = 0.f;
+            globals::enemyChamsColor[2] = 0.f;
+
+            globals::chamsBright = 25.0f;
+        }
+
+        //Visual
+        ImGui::Text("\nVisual Cheats");
+        //Glow
+        ImGui::Text("Glow Settings");
+        ImGui::Checkbox("Glow Cheat Enabled", &globals::glow);
+        ImGui::ColorEdit4("Friendly Glow Color", globals::friendlyGlowColor);
+        ImGui::ColorEdit4("Enemy Glow Color", globals::enemyGlowColor);
+
+        //CHAMS
+        ImGui::Text("\nChams");
+        ImGui::Checkbox("Chams Cheat Enabled", &globals::chams);
+        ImGui::ColorEdit3("Friendly Chams Color", globals::friendlyChamsColor);
+        ImGui::ColorEdit3("Enemy Chams Color", globals::enemyChamsColor);
+        ImGui::SliderFloat("Brightness", &globals::chamsBright, 0.0f, 25.0f);
+
+        //Radar
+        ImGui::Text("\nRadar");
+        ImGui::Checkbox("Radar Cheat Enabled", &globals::radar);
+
+        //Aim Chacks
+        ImGui::Text("\nAim Cheats");
+        //aimbot
+        ImGui::Text("By holding Mouse Button 4 you can move camera (aimbot will not shoot then)");
+        ImGui::Checkbox("Aimbot Enabled", &globals::aimbot);
+
+        //No recoil
+        ImGui::Checkbox("No Recoil Enabled", &globals::norecoil);
+
+        //Trigger Bot
+        ImGui::Text("\nTrigger Bot");
+        ImGui::Checkbox("Trigger Bot Enabled", &globals::triggerbot);
+        ImGui::Checkbox("Trigger on button (Q)", &globals::triggerbotBindEnabled);
+
+        //Movement
+        ImGui::Text("\nMovement Cheats");
+        //BHop
+        ImGui::Checkbox("Bunny Hop Enabled", &globals::bhop);
     }
-
-    //Visual
-    ImGui::Text("\nVisual Cheats");
-    //Glow
-    ImGui::Text("Glow Settings");
-    ImGui::Checkbox("Glow Cheat Enabled", &globals::glow);
-    ImGui::ColorEdit4("Friendly Glow Color", globals::friendlyGlowColor);
-    ImGui::ColorEdit4("Enemy Glow Color", globals::enemyGlowColor);
-
-    //CHAMS
-    ImGui::Text("\nChams");
-    ImGui::Checkbox("Chams Cheat Enabled", &globals::chams);
-    ImGui::ColorEdit3("Friendly Chams Color", globals::friendlyChamsColor);
-    ImGui::ColorEdit3("Enemy Chams Color", globals::enemyChamsColor);
-    ImGui::SliderFloat("Brightness", &globals::chamsBright, 0.0f, 25.0f);
-
-    //Radar
-    ImGui::Text("\nRadar");
-    ImGui::Checkbox("Radar Cheat Enabled", &globals::radar);
-
-    //Aim Chacks
-    ImGui::Text("\nAim Cheats");
-    //aimbot
-    ImGui::Text("By holding Mouse Button 4 you can move camera (aimbot will not shoot then)");
-    ImGui::Checkbox("Aimbot Enabled", &globals::aimbot);
-
-    //No recoil
-    ImGui::Checkbox("No Recoil Enabled", &globals::norecoil);
-
-    //Trigger Bot
-    ImGui::Text("\nTrigger Bot");
-    ImGui::Checkbox("Trigger Bot Enabled", &globals::triggerbot);
-    ImGui::Checkbox("Trigger on button (Q)", &globals::triggerbotBindEnabled);
-
-    //Movement
-    ImGui::Text("\nMovement Cheats");
-    //BHop
-    ImGui::Checkbox("Bunny Hop Enabled", &globals::bhop);
+    else
+    {
+        ImGui::Text("\nPlease lunch CS:GO");
+        ImGui::Text("And then relunch this file");
+    }
 
     ImGui::End();
 }
