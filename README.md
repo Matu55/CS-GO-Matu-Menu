@@ -15,7 +15,7 @@ Just download newest [totally-not-cheat-menu.exe Release](https://github.com/Mat
 - **Bunnyhop**
 
 ## Panic
-**After pressing it, it will automatically disable all cheats and it will close menu.**
+**After pressing it, it will automatically disable all cheats.**
 
 ## Glow
 **It will make players glow throught walls (wallhack).** <br><br>
