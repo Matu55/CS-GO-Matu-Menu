@@ -14,6 +14,9 @@ Just download newest [totally-not-cheat-menu.exe Release](https://github.com/Mat
 - **Triggerbot,**
 - **Bunnyhop**
 
+## Panic
+**After pressing it, it will automatically disable all cheats and it will close menu.**
+
 ## Glow
 **It will make players glow throught walls (wallhack).** <br><br>
 <img width="793" height="846" alt="image" src="https://github.com/user-attachments/assets/893244bc-a36d-4f13-9280-bcdeac65477a" />
